@@ -1,0 +1,84 @@
+<style>
+    /* Định dạng tổng thể cho trang */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Định dạng cho tiêu đề chính */
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Định dạng container chứa toàn bộ nội dung */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Định dạng cho liên kết tạo khóa học mới */
+    .create-course-link {
+        display: block;
+        text-align: center;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        margin-bottom: 20px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+    .create-course-link:hover {
+        background-color: #45a049;
+    }
+
+    /* Định dạng cho danh sách khóa học */
+    .course-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    /* Định dạng cho mỗi khóa học */
+    .course-item {
+        margin-bottom: 15px;
+    }
+
+    /* Định dạng cho liên kết của mỗi khóa học */
+    .course-item a {
+        text-decoration: none;
+        color: #333;
+        font-size: 20px;
+        padding: 12px;
+        display: block;
+        background-color: #eaeaea;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Hiệu ứng khi hover lên mỗi khóa học */
+    .course-item a:hover {
+        background-color: #ddd;
+    }
+</style>
+<div class="container">
+    <h1>This is Course page</h1>
+
+    <a href="http://localhost:3000/course/create" class="create-course-link">Create new course</a>
+
+    <ul class="course-list">
+        {{#each data}}
+        <li class="course-item">
+            <a href="http://localhost:3000/course/{{slug}}">{{title}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
