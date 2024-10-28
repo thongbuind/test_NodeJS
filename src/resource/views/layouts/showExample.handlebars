@@ -1,0 +1,1761 @@
+<div class="content">
+    <div class="content-container">
+        <div class="title">
+            <div class="wrapper">
+                <div class="btn close-btn"></div>
+                <div class="btn min-btn"></div>
+                <div class="btn max-btn"></div>
+            </div>
+            <h3 id="title-name"></h3>
+        </div>
+        <div class="body">
+            <div class="option">
+                <ul>
+                    <li id="option-theory">Lý thuyết</li>
+                    <li id="option-sample">Ví dụ</li>
+                    <li id="option-example" style="background-color: white;">Minh hoạ</li>
+                    <li id="option-note">Ghi chú</li>
+                </ul>
+            </div>
+            <div class=" screen">
+                <div class="example">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .content {
+        display: flex;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(51, 179, 179, 0.2);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content-container {
+        width: 1000px;
+        height: 500px;
+        background-color: rgb(226, 251, 251);
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .title {
+        width: 100%;
+        height: 32px;
+        line-height: 32px;
+        background-color: rgb(8, 143, 143);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        position: relative;
+    }
+
+    .wrapper {
+        width: 70px;
+        height: 32px;
+        padding-left: 5px;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .btn {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        margin-left: 5px;
+    }
+
+    .close-btn {
+        background-color: rgb(255, 59, 48);
+    }
+
+    .max-btn {
+        background-color: rgb(76, 217, 100);
+    }
+
+    .min-btn {
+        background-color: rgb(255, 204, 0);
+    }
+
+    .title h3 {
+        display: inline-block;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .body {
+        width: 1000px;
+    }
+
+    .option {
+        width: 100%;
+        height: 30px;
+    }
+
+    .option li {
+        display: inline-block;
+        list-style: none;
+        font-weight: bold;
+        width: 150px;
+        height: 30px;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 30px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .screen {
+        width: 100%;
+        height: 438px;
+        top: 30px;
+        background-color: white;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: relative;
+        top: 0;
+    }
+
+    .example-illustration {
+        display: block;
+        width: 720px;
+        height: 418px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .example {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+    .example-list {
+        background-color: white;
+        margin: 10px;
+        box-sizing: border-box;
+        position: absolute;
+        width: 250px;
+        height: 418px;
+        top: 0;
+        right: 0;
+        overflow: auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-list li {
+        display: block;
+        margin: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-weight: bold;
+        width: 190px;
+        height: auto;
+        padding: 10px 20px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-list li:hover {
+        cursor: pointer;
+    }
+
+    .algorythm_input {
+        display: inline-block;
+        font-size: 16px;
+        color: black;
+        padding: 10px 30px;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        box-sizing: border-box;
+    }
+
+    .algorythm_input p {
+        display: inline-block;
+        line-height: 30px;
+        color: black;
+    }
+
+    .algorythm_input .text {
+        background-color: white;
+        color: black;
+    }
+
+    #n_queens_output {
+        display: none;
+    }
+
+    .algorythm_output {
+        display: block;
+        font-size: 36px;
+        width: 100%;
+        height: 369px;
+        position: absolute;
+        top: 50px;
+        box-sizing: border-box;
+    }
+
+    #n_queens_total_result {
+        display: inline-block;
+        color: black;
+        font-size: 16px;
+        padding-left: 30px;
+    }
+
+    #chess_board {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        font-size: 0;
+        padding: 2px;
+    }
+
+    .board_cell_black {
+        display: inline-block;
+        background-color: black;
+        box-sizing: border-box;
+    }
+
+    .board_cell_white {
+        display: inline-block;
+        background-color: white;
+        box-sizing: border-box;
+    }
+
+    .roll {
+        display: inline-block;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .roll div {
+        display: inline-block;
+        text-align: center;
+    }
+
+    /* Sudoku */
+
+    #sudoku-noti {
+        display: none;
+        /* display: inline-block; */
+        color: red;
+        text-align: center;
+        padding: 10px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+
+    #sudoku-table {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 270px;
+        height: 270px;
+        display: grid;
+        grid-template-columns: repeat(9, 30px);
+        grid-template-rows: repeat(9, 30px);
+        background-color: black;
+        padding: 1px;
+        font-size: 0;
+    }
+
+    #sudoku-table p {
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border: 1px solid #555;
+        box-sizing: border-box;
+        font-size: 20px;
+        text-align: center;
+        /* Căn giữa chữ */
+        line-height: 30px;
+        /* Căn giữa chữ theo chiều dọc */
+    }
+
+    #sudoku-table p:hover {
+        background-color: rgb(199, 245, 245);
+    }
+
+    /* Viền dày hơn cho các vùng 3x3 */
+    #sudoku-table p:nth-child(27n+1),
+    #sudoku-table p:nth-child(27n+2),
+    #sudoku-table p:nth-child(27n+3),
+    #sudoku-table p:nth-child(27n+4),
+    #sudoku-table p:nth-child(27n+5),
+    #sudoku-table p:nth-child(27n+6),
+    #sudoku-table p:nth-child(27n+7),
+    #sudoku-table p:nth-child(27n+8),
+    #sudoku-table p:nth-child(27n+9),
+    #sudoku-table p:nth-child(81n+1) {
+        border-top: 2px solid black;
+    }
+
+    #sudoku-table p:nth-child(3n+1),
+    #sudoku-table p:nth-child(6n+1),
+    #sudoku-table p:nth-child(9n+1),
+    #sudoku-table p:nth-child(27n+1),
+    #sudoku-table p:nth-child(27n+4),
+    #sudoku-table p:nth-child(27n+7) {
+        border-left: 2px solid black;
+    }
+
+    #sudoku-table p:nth-child(27n+9),
+    #sudoku-table p:nth-child(27n+18),
+    #sudoku-table p:nth-child(27n+27) {
+        border-right: 2px solid black;
+    }
+
+    #sudoku-table p:nth-child(n+73):nth-child(-n+81) {
+        border-bottom: 2px solid black;
+    }
+
+
+    #sudoku-sample-data {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 100px;
+        left: 50px;
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #sudoku-clear {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 150px;
+        left: 60px;
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #sudoku-clear:hover,
+    #sudoku-sample-data:hover {
+        cursor: pointer;
+        background-color: rgb(41, 170, 170);
+    }
+
+    #sudoku-num-list {
+        display: block;
+        width: 70px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #sudoku-num-list li {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        margin: 5px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #sudoku-num-list li:hover {
+        cursor: pointer;
+        background-color: rgb(41, 170, 170);
+    }
+
+    #sudoku-solve {
+        display: inline-block;
+        border-radius: 10px;
+        padding: 5px 30px;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #sudoku-solve:hover {
+        cursor: pointer;
+        background-color: rgb(41, 170, 170);
+    }
+
+    /* Nguoi du lich */
+
+    #tsp-total-city {
+        display: inline-block;
+        font-size: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10px;
+        padding: 10px;
+        line-height: 30px;
+    }
+
+    #tsp-roll {
+        display: inline-block;
+        background-color: white;
+        width: 100px;
+        height: 30px;
+        font-size: 0;
+        border-radius: 5px;
+        border: 1px solid rgb(41, 170, 170);
+    }
+
+    #tsp-roll-down {
+        display: inline-block;
+        text-align: center;
+        width: 33px;
+        font-size: 26px;
+    }
+
+    #tsp-roll-num {
+        display: inline-block;
+        text-align: center;
+        width: 33px;
+        font-size: 20px;
+    }
+
+    #tsp-roll-up {
+        display: inline-block;
+        text-align: center;
+        width: 33px;
+        font-size: 20px;
+    }
+
+    #tsp-roll-down:hover,
+    #tsp-roll-up:hover {
+        cursor: pointer;
+    }
+
+    #tsp-cost-matrix {
+        width: 250px;
+        height: 250px;
+        background-color: black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% - 10px));
+        font-size: 0;
+        border: 1px solid black;
+    }
+
+    .tsp-cell {
+        display: inline-block;
+        width: 62.5px;
+        height: 62.5px;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+        background-color: white;
+        box-sizing: border-box;
+        border: 1px solid black;
+        color: black;
+    }
+
+    input.tsp-cell::placeholder {
+        color: black;
+    }
+
+    #tsp-solve {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 100px;
+        left: 50px;
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #tsp-clear {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 150px;
+        left: 50px;
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #tsp-solve:hover,
+    #tsp-sample-data:hover,
+    #tsp-clear:hover {
+        cursor: pointer;
+        background-color: rgb(41, 170, 170);
+    }
+
+    #tsp-sample-data {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 200px;
+        left: 50px;
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #tsp-result {
+        color: black;
+        display: inline-block;
+        width: 500px;
+        height: 50px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(169, 0, 0, 0.357);
+    }
+
+    #tsp-result div {
+        line-height: 25px;
+
+    }
+
+    /* binary search */
+
+    #binary-search-text-input,
+    #binary-search-solve,
+    #binary-search-sample-data {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid rgb(41, 170, 170);
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+
+    #binary-search-solve:hover,
+    #binary-search-sample-data:hover {
+        cursor: pointer;
+        background-color: rgb(41, 170, 170);
+    }
+
+    #binary-search-x-input {
+        display: inline-block;
+        width: 20px;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid rgb(41, 170, 170);
+        font-weight: bold;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        background-color: white;
+        text-align: center;
+    }
+
+    #binary-search-input {
+        display: flex;
+        justify-content: center;
+        /* Căn giữa các phần tử theo chiều ngang */
+        align-items: center;
+        /* Căn giữa các phần tử theo chiều dọc */
+        gap: 10px;
+        /* Khoảng cách giữa các phần tử */
+        padding: 10px;
+        height: 58px;
+        box-sizing: border-box;
+    }
+
+    .binary-search-list {
+        display: none;
+        font-size: 0;
+        width: 700px;
+        height: 50px;
+        padding: 10px 0 10px 0;
+        margin: 0 10px 0 10px;
+        box-sizing: border-box;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
+    .binary-search-list li {
+        font-size: 20px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .binary-search-cell {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid rgb(41, 170, 170);
+        margin: 1px;
+
+    }
+
+    #binary-search-progress {
+        display: block;
+        height: 250px;
+        overflow-y: auto;
+    }
+
+    #binary-search-result {
+        display: none;
+        width: 310px;
+        height: 40px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 1px solid rgb(41, 170, 170);
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        margin: 10px;
+        padding: 10px;
+        line-height: 18px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    const data = {{{ data }}};
+    const path = '{{ path }}';
+    renderExample(path);
+    document.getElementsByClassName("close-btn")[0].onclick = function (e) {
+        window.location.href = '/';
+    }
+    document.getElementById("option-sample").onclick = function (e) {
+        e.preventDefault();
+        window.location.href = `http://localhost:3000/${data.slug}/sample`;
+    }
+    document.getElementById("option-theory").onclick = function (e) {
+        e.preventDefault();
+        window.location.href = `http://localhost:3000/${data.slug}/theory`;
+    }
+    document.getElementById("option-note").onclick = function (e) {
+        e.preventDefault();
+        window.location.href = `http://localhost:3000/${data.slug}/note`;
+    }
+    // Functions
+    function renderExample(path) {
+        let text = data.name;
+        document.getElementById("title-name").textContent = text;
+
+        var html = `
+            <div class="example-illustration"></div>
+            <ul class="example-list">
+        `;
+        for (let i = 0; i < data["examples"].length; i++) {
+            html += `
+                <li id="example/${i + 1}">${data["examples"][i]["name"]}</li>
+            `;
+        }
+        html += `</ul>`;
+        document.querySelector('.example').innerHTML = html;
+        ganSuKienOnclickChoExample();
+        runCode(path);
+    }
+    function ganSuKienOnclickChoExample() {
+        document.getElementById('example/1').onclick = function (e) {
+            e.preventDefault();
+            window.location.href = `http://localhost:3000/${data.slug}/example/1`;
+        }
+        document.getElementById('example/2').onclick = function (e) {
+            e.preventDefault();
+            window.location.href = `http://localhost:3000/${data.slug}/example/2`;
+        }
+        document.getElementById('example/3').onclick = function (e) {
+            e.preventDefault();
+            window.location.href = `http://localhost:3000/${data.slug}/example/3`;
+        }
+    }
+    function runCode(path) {
+        document.getElementById('example/1').style.backgroundColor = "";
+        document.getElementById('example/2').style.backgroundColor = "";
+        document.getElementById('example/3').style.backgroundColor = "";
+        if (path[path.length - 1] == "1") {
+            document.getElementById('example/1').style.backgroundColor = "rgb(51, 179, 179)";
+        } else if (path[path.length - 1] == "2") {
+            document.getElementById('example/2').style.backgroundColor = "rgb(51, 179, 179)";
+        } else if (path[path.length - 1] == "3") {
+            document.getElementById('example/3').style.backgroundColor = "rgb(51, 179, 179)";
+        }
+        if (path == "quay-lui/example/1") {
+            NQueensFunction();
+        } else if (path == "quay-lui/example/2") {
+            HoanViFunction();
+        } else if (path == "quay-lui/example/3") {
+            SudokuFunction();
+        } else if (path == "de-quy/example/1") {
+            GiaiThuaFunction();
+        } else if (path == "de-quy/example/2") {
+            FibonacciFunction();
+        } else if (path == "de-quy/example/3") {
+            ThapHaNoiFunction();
+        } else if (path == "nhanh-can/example/1") {
+            NguoiDuLichFunction();
+        } else if (path == "nhanh-can/example/2") {
+            XepLichFunction();
+        } else if (path == "nhanh-can/example/3") {
+            console.log("balo");
+        } else if (path == "tham-lam/example/1") {
+            console.log("chon hoat dong");
+        } else if (path == "tham-lam/example/2") {
+            console.log("chon tien xu");
+        } else if (path == "tham-lam/example/3") {
+            CayBaoTrumNhoNhatFunction();
+        } else if (path == "chia-de-tri/example/1") {
+            MergeSortFunction();
+        } else if (path == "chia-de-tri/example/2") {
+            QuickSortFunction();
+        } else if (path == "chia-de-tri/example/3") {
+            BinarySearchFunction();
+        } else if (path == "quy-hoach-dong/example/1") {
+            console.log("duong di ngan nhat");
+        } else if (path == "quy-hoach-dong/example/2") {
+            console.log("balo");
+        } else if (path == "quy-hoach-dong/example/3") {
+            ChuoiConChungDaiNhatFunction();
+        }
+    }
+    function NQueensFunction() {
+        var size;
+        let i;
+        let x = Array(30).fill(0);
+        let cot = Array(30).fill(0);
+        let cheo_1 = Array(30).fill(0);
+        let cheo_2 = Array(30).fill(0);
+        let n_queens_result = [];
+        let cnt = 0;
+        var n_queens_result_index = 1;
+
+        renderNQueens(); // render ra HTML 
+
+        // Lệnh thực thi chính
+        document.getElementById("n_queens_button").onclick = function (e) {
+            e.preventDefault();
+            n_queens_result_index = 1;
+            document.getElementById("n_queens_result_roll").textContent = `${n_queens_result_index}`;
+            cnt = 0;
+            n_queens_result = [];
+            document.getElementById("n_queens_output").style.display = "block";
+            if (size == 1) {
+                if (document.getElementById("chess_board")) {
+                    document.getElementById("chess_board").remove();
+                }
+                document.getElementById("n_queens_total_result").textContent = "Số lượng kết quả: 1";
+            } else if (size == 2 || size == 3) {
+                if (document.getElementById("chess_board")) {
+                    document.getElementById("chess_board").remove();
+                }
+                document.getElementById("n_queens_total_result").textContent = "Số lượng kết quả: 0";
+            } else if (size > 14) {
+                if (document.getElementById("chess_board")) {
+                    document.getElementById("chess_board").remove();
+                }
+                document.getElementById("n_queens_total_result").textContent = "Kích thước bàn cờ quá lớn, vượt quá khả năng phần cứng thiết bị, vui lòng thử lại với kích thước nhỏ hơn 15";
+            } else {
+                if (document.getElementById("chess_board")) {
+                    document.getElementById("chess_board").remove();
+                }
+                var cell_size = 300 / size;
+                var chess_board = document.createElement("div");
+                chess_board.id = "chess_board";
+                document.getElementById("n_queens_output").appendChild(chess_board);
+
+                var color_y = 0;
+                for (var k = 1; k <= size; k++) {
+                    var color_x = color_y;
+                    for (var j = 1; j <= size; j++) {
+                        var cell = document.createElement("div");
+                        if (color_x % 2 == 0) {
+                            cell.className = "board_cell_black";
+                            cell.id = `${k}${j}`;
+                            cell.style.width = `${cell_size}px`;
+                            cell.style.height = `${cell_size}px`;
+                        } else {
+                            cell.className = "board_cell_white";
+                            cell.id = `${k}${j}`;
+                            cell.style.width = `${cell_size}px`;
+                            cell.style.height = `${cell_size}px`;
+                        }
+                        document.getElementById("chess_board").appendChild(cell);
+                        color_x++;
+                    }
+                    color_y++;
+                }
+                n_queens(1);
+                document.getElementById("n_queens_total_result").textContent = `Số lượng kết quả: ${cnt}`;
+                for (var j = 0; j < size; j++) {
+                    var queen_location = `${j + 1}${n_queens_result[n_queens_result_index][j]}`;
+                    document.getElementById(queen_location).style.backgroundColor = "rgb(102, 204, 204)";
+                }
+            }
+        }
+
+        function renderNQueens() {
+            var html = `
+            <div id="n_queens_input" class="algorythm_input">
+                <p>Nhập kích thước bàn cờ</p>
+                <input type="text" id="n_queens_text_input" class="text">
+                <button id="n_queens_button">Start</button>
+            </div>
+            <div id="n_queens_output" class="algorythm_output">
+                <div id="n_queens_total_result">
+                    Số lượng kết quả:
+                </div>
+                <div class="roll">
+                    <button id="n_queens_result_before" class="before"><=</button>
+                    <div id="n_queens_result_roll">1</div>
+                    <button id="n_queens_result_next" class="next">=></button>
+                </div>
+            </div>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+
+        // Nhận size bàn cờ qua text input
+        document.getElementById("n_queens_text_input").onchange = function (e) {
+            size = Number(e.target.value);
+        }
+
+        // Nhấn nút kết quả tiếp theo
+        document.getElementById("n_queens_result_next").onclick = function (e) {
+            e.preventDefault();
+            returnOriginalColor();
+            if (n_queens_result_index < cnt) {
+                n_queens_result_index++;
+            }
+            for (var j = 0; j < size; j++) {
+                var queen_location = `${j + 1}${n_queens_result[n_queens_result_index][j]}`;
+                document.getElementById(queen_location).style.backgroundColor = "rgb(102, 204, 204)";
+            }
+            document.getElementById("n_queens_result_roll").textContent = `${n_queens_result_index}`;
+        }
+
+        // Nhấn nút kết quả trước
+        document.getElementById("n_queens_result_before").onclick = function (e) {
+            e.preventDefault();
+            returnOriginalColor();
+            if (n_queens_result_index > 1) {
+                n_queens_result_index--;
+            }
+            for (var j = 0; j < size; j++) {
+                var queen_location = `${j + 1}${n_queens_result[n_queens_result_index][j]}`;
+                document.getElementById(queen_location).style.backgroundColor = "rgb(102, 204, 204)";
+            }
+            document.getElementById("n_queens_result_roll").textContent = `${n_queens_result_index}`;
+        }
+
+        function luu_ket_qua_n_queens() {
+            n_queens_result[cnt] = [];  // Tạo hàng mới trong mảng 2 chiều
+            for (var j = 1; j <= size; j++) {
+                n_queens_result[cnt][j - 1] = x[j]; // Lưu giá trị của x từ 1 đến size
+            }
+        }
+        function n_queens(i) {
+            for (var j = 1; j <= size; j++) {
+                if (cot[j] == 0 && cheo_1[i - j + size] == 0 && cheo_2[i + j - 1] == 0) {
+                    x[i] = j;
+                    cot[j] = 1;
+                    cheo_1[i - j + size] = 1;
+                    cheo_2[i + j - 1] = 1;
+                    if (i == size) {
+                        cnt++;
+                        luu_ket_qua_n_queens();
+                    } else {
+                        n_queens(i + 1);
+                    }
+                    // backtrack
+                    cot[j] = 0;
+                    cheo_1[i - j + size] = 0;
+                    cheo_2[i + j - 1] = 0;
+                }
+            }
+        }
+
+        // Hàm trả lại màu gốc sau mỗi lần nhấn nút lấy kết quả khác 
+        function returnOriginalColor() {
+            for (var j = 0; j < size; j++) {
+                var queen_location = `${j + 1}${n_queens_result[n_queens_result_index][j]}`;
+                if (j % 2 != 0) {
+                    if (n_queens_result[n_queens_result_index][j] % 2 == 0) {
+                        document.getElementById(queen_location).style.backgroundColor = "black";
+                    } else {
+                        document.getElementById(queen_location).style.backgroundColor = "white";
+                    }
+                } else {
+                    if (n_queens_result[n_queens_result_index][j] % 2 == 0) {
+                        document.getElementById(queen_location).style.backgroundColor = "white";
+                    } else {
+                        document.getElementById(queen_location).style.backgroundColor = "black";
+                    }
+                }
+            }
+        }
+    }
+    function BinarySearchFunction() {
+        var arr = [];
+        var x;
+        var result;
+        var cnt = 0;
+        var progress = Array.from({ length: 20 }, () => Array(20).fill(0));
+
+        renderBinarySearch(); // render ra HTML
+
+        // Nhập mảng
+        getArr();
+
+        // Lệnh thực thi chính
+        document.getElementById("binary-search-solve").onclick = function (e) {
+            e.preventDefault();
+            result = binarySearch();
+            printArr();
+            printProgress();
+        }
+
+        // Function
+        function renderBinarySearch() {
+            var html = `
+            <!-- nhập mảng đầu vào, số liệu mẫu -->
+            <div id="binary-search-input">
+                <button id="binary-search-sample-data">Số liệu mẫu</button>
+                <input  id="binary-search-text-input" type="text" placeholder="Nhập mảng">
+                <input  id="binary-search-x-input" type="text" placeholder="X">
+                <button id="binary-search-solve">Tìm kiếm</button>
+            </div>
+            <!-- in ra mảng dưới dạng đã sắp xếp -->
+            <div class="binary-search-list"></div>
+            <!-- bước 1 -> bước n -->
+            <div id="binary-search-progress"></div>
+            <div id="binary-search-result"></div>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+
+        function check() {
+            let n = arr.length;
+            for (let i = 0; i < n; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function sort() {
+            let n = arr.length;
+            for (let i = 0; i < n; i++) {
+                let minIndex = i;
+                for (let j = i; j < n; j++) {
+                    if (arr[j] < arr[minIndex]) {
+                        let tmp = arr[j];
+                        arr[j] = arr[minIndex];
+                        arr[minIndex] = tmp;
+                    }
+                }
+            }
+        }
+
+        function binarySearch() {
+            let n = arr.length;
+            if (!check()) {
+                sort();
+            }
+            let left = 0;
+            let right = n - 1;
+            while (left <= right) {
+                let mid = Math.floor(left + (right - left) / 2);
+                if (arr[mid] == x) {
+                    return mid;
+                } else if (arr[mid] > x) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+                let index = 0;
+                for (let i = left; i <= right; i++) {
+                    progress[cnt][index] = arr[i];
+                    index++;
+                }
+                cnt++;
+            }
+            return -1;
+        }
+
+        function getArr() {
+            document.getElementById("binary-search-text-input").onchange = function (e) {
+                e.preventDefault();
+                arr = e.target.value.split(' ').map(function (item) {
+                    return parseInt(item.trim(), 10);
+                });
+                if (arr.length == 1) {
+                    arr = e.target.value.split(',').map(function (item) {
+                        return parseInt(item.trim(), 10);
+                    });
+                    if (arr.length == 1) {
+                        arr = e.target.value.split('-').map(function (item) {
+                            return parseInt(item.trim(), 10);
+                        });
+                        if (arr.length == 1) {
+                            arr = e.target.value.split(';').map(function (item) {
+                                return parseInt(item.trim(), 10);
+                            });
+                        }
+                    }
+                }
+            }
+            document.getElementById("binary-search-x-input").onchange = function (e) {
+                e.preventDefault();
+                x = Number(e.target.value);
+            }
+        }
+        function printArr() {
+            let n = arr.length;
+            let html = '<ul>';
+            for (let i = 0; i < n; i++) {
+                html += `<li class="binary-search-cell">${arr[i]}</li>`;
+            }
+            html += '</ul>';
+            document.querySelector(".binary-search-list").innerHTML = html;
+            document.querySelectorAll(".binary-search-list").forEach(function (e) {
+                e.style.display = "block";
+            })
+        }
+
+        function printProgress() {
+            let html = '';
+            for (let i = 0; i < cnt; i++) {
+                let tmp = `<ul class="binary-search-list">`;
+                for (let j = 0; j < progress[i].length; j++) {
+                    if (progress[i][j] !== 0) {
+                        tmp += `<li class="binary-search-cell">${progress[i][j]}</li>`;
+                    }
+                }
+                tmp += '</ul>';
+                html += tmp;
+            }
+
+            document.getElementById("binary-search-progress").innerHTML = html;
+            document.querySelectorAll(".binary-search-list").forEach(function (e) {
+                e.style.display = "block";
+            });
+            document.getElementById("binary-search-result").textContent = `Số cần tìm ở vị trí thứ ${result} trong mảng`;
+            document.getElementById("binary-search-result").style.display = "block";
+        }
+
+        function binarySearchSampleData() {
+
+        }
+    }
+    function FibonacciFunction() {
+        renderFibonacci(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderFibonacci() {
+            var html = `
+            <h1>Mô hình Fibonacci đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function GiaiThuaFunction() {
+        renderGiaiThua(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderGiaiThua() {
+            var html = `
+            <h1>Mô hình giai thừa đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function HoanViFunction() {
+        renderHoanVi(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderHoanVi() {
+            var html = `
+            <h1>Mô hình hoán vị đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function ChuoiConChungDaiNhatFunction() {
+        renderChuoiConChungDaiNhat(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderChuoiConChungDaiNhat() {
+            var html = `
+            <h1>Mô hình bài toán MergeSort đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function MergeSortFunction() {
+        renderMergeSort(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderMergeSort() {
+            var html = `
+            <h1>Mô hình bài toán MergeSort đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function CayBaoTrumNhoNhatFunction() {
+        renderCayBaoTrumNhoNhat(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderCayBaoTrumNhoNhat() {
+            var html = `
+            <h1>Mô hình bài toán Cay Bao Trum Nho Nhat đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function QuickSortFunction() {
+        renderQuickSort(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderQuickSort() {
+            var html = `
+            <h1>Mô hình bài toán QuickSort đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function SudokuFunction() {
+        renderSudoku(); // render HTML
+        var sudokuArray = Array.from({ length: 9 }, () => Array(9).fill(0));
+
+        // Sample data
+        document.getElementById("sudoku-sample-data").onclick = function (e) {
+            e.preventDefault();
+            displaySampleData();
+        }
+
+        // Điền số
+        fillData();
+
+        // Clear
+        document.getElementById("sudoku-clear").onclick = function (e) {
+            e.preventDefault();
+            clearTable();
+            fillData();
+        }
+
+        // Lệnh thực thi chính
+        document.getElementById("sudoku-solve").onclick = function (e) {
+            e.preventDefault();
+            saveInputSudokuArr();
+            if (sudokuSolve(0, 0)) {
+                document.getElementById("sudoku-noti").style.display = "none";
+                displayResult();
+            } else {
+                document.getElementById("sudoku-noti").style.display = "inline-block";
+            }
+        }
+
+        // Function
+        function renderSudoku() {
+            var html = `
+            <p id="sudoku-noti">Không giải được!</p>
+            <div id="sudoku-sample-data">Số liệu mẫu</div>
+            <div id="sudoku-clear">Làm mới</div>
+            <div id="sudoku-table">
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+                <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            </div>
+            <ul id="sudoku-num-list">
+                <li id="sudoku-num-list-dedete">Xoá</li>
+                <li id="sudoku-num-list-1">1</li>
+                <li id="sudoku-num-list-2">2</li>
+                <li id="sudoku-num-list-3">3</li>
+                <li id="sudoku-num-list-4">4</li>
+                <li id="sudoku-num-list-5">5</li>
+                <li id="sudoku-num-list-6">6</li>
+                <li id="sudoku-num-list-7">7</li>
+                <li id="sudoku-num-list-8">8</li>
+                <li id="sudoku-num-list-9">9</li>
+            </ul>
+            <div id="sudoku-solve">Giải</div>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+
+        function fillData() {
+            let selectedP = null; // Biến để lưu trữ thẻ <p> đang được chọn
+            document.querySelectorAll("#sudoku-table p").forEach(function (e) {
+                e.addEventListener("click", function () {
+                    changeColor(e);
+                    selectedP = e; // Lưu thẻ <p> hiện tại vào biến
+                });
+            });
+            document.querySelectorAll("#sudoku-num-list li").forEach(function (e) {
+                e.addEventListener("click", function () {
+                    if (selectedP) { // Kiểm tra xem có thẻ <p> nào được chọn không
+                        // selectedP.textContent = e.textContent.trim();
+                        var num = e.textContent.trim();
+                        if (num > 0 && num < 10) {
+                            selectedP.textContent = num;
+                        } else {
+                            selectedP.textContent = "";
+                        }
+                    }
+                });
+            });
+        }
+
+        function changeColor(e1) {
+            document.querySelectorAll("#sudoku-table p").forEach(function (e2) {
+                e2.style.backgroundColor = "white";
+            })
+            e1.style.backgroundColor = "rgb(102, 204, 204";
+        }
+        function saveInputSudokuArr() {
+            var index = 0;
+            for (var i = 0; i < 9; i++) {
+                for (var j = 0; j < 9; j++) {
+                    var tmp = document.querySelectorAll("#sudoku-table p")[index].textContent.trim();
+                    if (tmp != "") {
+                        sudokuArray[i][j] = Number(tmp);
+                    } else {
+                        sudokuArray[i][j] = 0;
+                    }
+                    index++;
+                }
+            }
+        }
+        function check(i, j, num) {
+            // check hàng ngang
+            for (var x = 0; x < 9; x++) {
+                if (sudokuArray[i][x] == num) {
+                    return false;
+                }
+            }
+            // check hàng dọc
+            for (var y = 0; y < 9; y++) {
+                if (sudokuArray[y][j] == num) {
+                    return false;
+                }
+            }
+            // check ô 3x3
+            var start_i = i - i % 3;
+            var start_j = j - j % 3;
+            for (var y = 0; y < 3; y++) {
+                for (var x = 0; x < 3; x++) {
+                    if (sudokuArray[y + start_i][x + start_j] == num) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        // Thuật toán backtrack
+        function sudokuSolve(i, j) {
+            // nếu đi đến ô cuối cùng rồi thì return
+            if (i == 8 && j == 9) {
+                return true;
+            }
+            // nếu đi đến cuối hàng rồi thì nhảy xuống ô dưới
+            if (j == 9) {
+                i++;
+                j = 0;
+            }
+            // nếu ô này có điền số rồi thì chuyển sang ô kế tiếp
+            if (sudokuArray[i][j] != 0) {
+                return sudokuSolve(i, j + 1);
+            }
+            for (var num = 1; num <= 9; num++) {
+                if (check(i, j, num)) {
+                    sudokuArray[i][j] = num;
+                    if (sudokuSolve(i, j + 1)) {
+                        return true;
+                    }
+                }
+                sudokuArray[i][j] = 0; // backtrack
+            }
+            return false;
+        }
+        function displayResult() {
+            var index = 0;
+            for (var i = 0; i < 9; i++) {
+                for (var j = 0; j < 9; j++) {
+                    var tmp = sudokuArray[i][j];
+                    if (document.querySelectorAll("#sudoku-table p")[index].textContent.trim() == "") {
+                        document.querySelectorAll("#sudoku-table p")[index].textContent = tmp;
+                        document.querySelectorAll("#sudoku-table p")[index].style.color = "rgb(8, 143, 143)";
+                    }
+                    index++;
+                }
+            }
+        }
+        function displaySampleData() {
+            let originalTable = `
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+        `;
+            document.getElementById("sudoku-table").innerHTML = originalTable;
+            let sudokuSampleData = [
+                [
+                    [8, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 3, 6, 0, 0, 0, 0, 0],
+                    [0, 7, 0, 0, 9, 0, 2, 0, 0],
+                    [0, 5, 0, 0, 0, 7, 0, 0, 0],
+                    [0, 0, 0, 0, 4, 5, 7, 0, 0],
+                    [0, 0, 0, 1, 0, 0, 0, 3, 0],
+                    [0, 0, 1, 0, 0, 0, 0, 6, 8],
+                    [0, 0, 8, 5, 0, 0, 0, 1, 0],
+                    [0, 9, 0, 0, 0, 0, 4, 0, 0]
+                ],
+                [
+                    [0, 0, 5, 3, 0, 0, 0, 0, 0],
+                    [8, 0, 0, 0, 0, 0, 0, 2, 0],
+                    [0, 7, 0, 0, 1, 0, 5, 0, 0],
+                    [4, 0, 0, 0, 0, 5, 3, 0, 0],
+                    [0, 1, 0, 0, 7, 0, 0, 0, 6],
+                    [0, 0, 3, 2, 0, 0, 0, 8, 0],
+                    [0, 6, 0, 5, 0, 0, 0, 0, 9],
+                    [0, 0, 4, 0, 0, 0, 0, 3, 0],
+                    [0, 0, 0, 0, 0, 9, 7, 0, 0]
+                ],
+                [
+                    [0, 2, 0, 0, 0, 0, 0, 0, 3],
+                    [0, 0, 0, 6, 0, 0, 5, 0, 0],
+                    [0, 0, 7, 0, 0, 0, 0, 0, 8],
+                    [0, 0, 0, 0, 3, 0, 0, 0, 0],
+                    [0, 4, 0, 0, 7, 0, 0, 6, 0],
+                    [0, 0, 0, 0, 2, 0, 0, 0, 0],
+                    [1, 0, 0, 0, 0, 0, 9, 0, 0],
+                    [0, 0, 8, 0, 0, 9, 0, 0, 0],
+                    [4, 0, 0, 0, 0, 0, 0, 1, 0]
+                ],
+                [
+                    [0, 0, 0, 0, 0, 4, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 3, 0],
+                    [0, 0, 0, 0, 1, 0, 0, 0, 8],
+                    [0, 0, 0, 0, 0, 0, 9, 0, 0],
+                    [5, 0, 0, 0, 0, 0, 0, 7, 0],
+                    [0, 0, 0, 2, 0, 0, 0, 0, 3],
+                    [0, 6, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 8, 0, 0],
+                    [0, 0, 0, 0, 9, 0, 0, 0, 0]
+                ],
+                [
+                    [0, 0, 9, 0, 0, 0, 0, 0, 0],
+                    [0, 5, 0, 0, 3, 0, 0, 7, 8],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 6],
+                    [0, 0, 5, 0, 7, 0, 0, 0, 0],
+                    [0, 0, 0, 8, 0, 4, 0, 0, 0],
+                    [0, 0, 0, 0, 2, 0, 5, 0, 0],
+                    [0, 0, 7, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 1, 0, 4, 0],
+                    [0, 2, 0, 6, 0, 0, 0, 0, 0]
+                ],
+                [
+                    [0, 0, 0, 7, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 5],
+                    [0, 0, 4, 0, 0, 1, 0, 6, 0],
+                    [0, 0, 0, 0, 0, 0, 2, 0, 0],
+                    [1, 0, 5, 0, 0, 0, 0, 0, 0],
+                    [0, 3, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 6, 0, 0, 0, 9, 0, 0, 0],
+                    [0, 9, 0, 4, 0, 0, 0, 0, 0],
+                    [8, 0, 0, 0, 0, 0, 0, 0, 0]
+                ],
+                [
+                    [0, 0, 0, 0, 0, 0, 0, 5, 0],
+                    [0, 0, 0, 0, 0, 0, 3, 0, 0],
+                    [4, 0, 0, 0, 0, 7, 0, 0, 0],
+                    [0, 0, 0, 0, 2, 0, 0, 0, 0],
+                    [5, 0, 0, 0, 0, 0, 1, 0, 0],
+                    [0, 0, 0, 0, 0, 6, 0, 0, 4],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 3, 7, 0, 0, 0, 0, 0, 0],
+                    [0, 6, 0, 0, 0, 0, 0, 0, 9]
+                ]
+            ];
+            var randomNum = Math.floor(Math.random() * 7);
+            console.log(randomNum);
+            var data = sudokuSampleData[randomNum];
+
+            var index = 0;
+            for (var i = 0; i < 9; i++) {
+                for (var j = 0; j < 9; j++) {
+                    var tmp = data[i][j];
+                    if (tmp != 0) {
+                        document.querySelectorAll("#sudoku-table p")[index].textContent = tmp;
+                    }
+                    index++;
+                }
+            }
+        }
+        function clearTable() {
+            document.querySelectorAll("#sudoku-table p").forEach(function (e) {
+                e.textContent = "";
+                e.style.color = "black";
+            });
+        }
+    }
+    function ThapHaNoiFunction() {
+        renderThapHaNoi(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderThapHaNoi() {
+            var html = `
+            <h1>Mô hình bài toán tháp hà nội đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+    function NguoiDuLichFunction() {
+        renderNguoiDuLich(); // render ra HTML
+        var totalCity = 4;
+        var costMatrix = Array.from({ length: 20 }, () => Array(20).fill(0));
+        var cost = 0, ans = Number.MAX_SAFE_INTEGER, cmin = Number.MAX_SAFE_INTEGER;
+        var visited = Array(20).fill(0);
+        var x = Array(20).fill(0);
+        var route = [];
+
+        // Tăng giảm số thành phố   
+        changeQuantity();
+
+        // Lệnh thực thi chính
+        document.getElementById("tsp-solve").onclick = function (e) {
+            x[0] = 0;
+            visited[0] = 1;
+            TSP(1);
+            document.getElementById("tsp-result-num").textContent = ans;
+            document.getElementById("tsp-result-route").textContent = `${route.join(" => ")} => 0`;
+        }
+
+        // Làm mới
+        document.getElementById("tsp-clear").onclick = function (e) {
+            e.preventDefault();
+            tspClear();
+        }
+
+        // Số liệu mẫu
+        document.getElementById("tsp-sample-data").onclick = function (e) {
+            e.preventDefault();
+            tspSampleData();
+        }
+
+        // Function
+        function renderNguoiDuLich() {
+            let html = `
+            <div id="tsp-total-city">
+                Tổng số thành phố:
+                <div id="tsp-roll">
+                    <div id="tsp-roll-down">-</div>
+                    <span id="tsp-roll-num">4</span>
+                    <div id="tsp-roll-up">+</div>
+                </div>
+            </div>
+            <div id="tsp-cost-matrix">
+            </div>
+            <div id="tsp-solve">Giải</div>
+            <div id="tsp-clear">Làm mới</div>
+            <div id="tsp-sample-data">Số liệu mẫu</div>
+            <div id="tsp-result">
+                <div>Thứ tự thành phố đi qua: <span id="tsp-result-route"></span></div>
+                <div><strong>Tổng chi phí: <span id="tsp-result-num"></span></strong></div>
+            </div>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+            changeMatrixSize(4);
+
+        }
+
+        function changeQuantity() {
+            document.getElementById("tsp-roll-down").onclick = function (e) {
+                e.preventDefault();
+                if (totalCity > 4) {
+                    totalCity--;
+                    document.getElementById("tsp-roll-num").textContent = totalCity;
+                    changeMatrixSize(totalCity);
+                }
+            }
+            document.getElementById("tsp-roll-up").onclick = function (e) {
+                e.preventDefault();
+                if (totalCity < 11) {
+                    totalCity++;
+                    document.getElementById("tsp-roll-num").textContent = totalCity;
+                    changeMatrixSize(totalCity);
+                }
+            }
+        }
+
+        function changeMatrixSize(totalCity) {
+            let matrix = document.getElementById("tsp-cost-matrix");
+            let cellSize = 250 / totalCity;
+            matrix.innerHTML = "";
+            for (let i = 0; i < totalCity; i++) {
+                for (let j = 0; j < totalCity; j++) {
+                    if (i == j) {
+                        let cell = document.createElement("input");
+                        cell.type = "text";
+                        cell.className = "tsp-cell";
+                        cell.id = `${i}${j}`;
+                        cell.placeholder = "0";
+
+                        matrix.appendChild(cell);
+                    } else {
+                        let cell = document.createElement("input");
+                        cell.type = "text";
+                        cell.className = "tsp-cell";
+                        cell.id = `${i}${j}`;
+
+                        matrix.appendChild(cell);
+                    }
+                }
+            }
+            document.querySelectorAll(".tsp-cell").forEach(function (e) {
+                e.style.width = `${cellSize}px`;
+                e.style.height = `${cellSize}px`;
+            });
+            costMatrix = Array.from({ length: 20 }, () => Array(20).fill(0));
+            changeCost();
+        }
+
+        function changeCost() {
+            document.querySelectorAll(".tsp-cell").forEach(function (e1) {
+                e1.onchange = function (e2) {
+                    let id = String(e1.id);
+                    for (let i = 0; i < totalCity; i++) {
+                        for (let j = 0; j < totalCity; j++) {
+                            if (`${i}${j}` == id) {
+                                costMatrix[i][j] = Number(e2.target.value);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        var cost = 0, ans = Number.MAX_SAFE_INTEGER, cmin = Number.MAX_SAFE_INTEGER; // dùng cmin để xác định cận
+        var visited = Array(20).fill(0);
+        var x = Array(20).fill(0);
+        function TSP(i) {
+            for (var j = 0; j < totalCity; j++) {
+                if (visited[j] == 0) {
+                    visited[j] = 1;
+                    x[i] = j;
+                    cost += costMatrix[x[i - 1]][x[i]];
+                    if (i == (totalCity - 1)) {
+                        let tmp = ans;
+                        ans = Math.min(ans, cost + costMatrix[x[totalCity - 1]][0]);
+                        if (ans < tmp) {
+                            route = x.slice(0, totalCity);
+                        }
+                    } else {
+                        TSP(i + 1);
+                    }
+                    // Backtrack
+                    visited[j] = 0;
+                    cost -= costMatrix[x[i - 1]][x[i]];
+                }
+            }
+        }
+
+        function tspClear() {
+            document.querySelectorAll(".tsp-cell").forEach(function (e) {
+                e.value = "";
+            })
+            document.getElementById("tsp-result-num").textContent = "";
+            document.getElementById("tsp-result-route").textContent = "";
+        }
+
+        function tspSampleData() {
+            totalCity = 5;
+            document.getElementById("tsp-roll-num").textContent = totalCity;
+            changeMatrixSize(totalCity);
+            costMatrix = [
+                [0, 10, 15, 20, 25],
+                [10, 0, 35, 25, 30],
+                [15, 35, 0, 30, 20],
+                [20, 25, 30, 0, 15],
+                [25, 30, 20, 15, 0]
+            ];
+            let tmp = costMatrix.flat();
+            for (let i = 0; i < tmp.length; i++) {
+                document.getElementsByClassName("tsp-cell")[i].value = tmp[i];
+            }
+        }
+    }
+    function XepLichFunction() {
+        renderXepLich(); // render ra HTML
+
+        // Lệnh thực thi chính
+
+        // Function
+        function renderXepLich() {
+            var html = `
+            <h1>Mô hình bài toán xếp lịch đang trong giai đoạn phát triển</h1>
+            <h2>
+                <strong>Các minh hoạ đã có:</strong>
+                <ul>
+                    <li> * Bài toán N quân hậu (quay lui)</li>
+                    <li> * Bài toán giải Sudoku (quay lui)</li>
+                    <li> * Bài toán người du lịch (nhánh và cận)</li>
+                    <li> * Tìm kiếm nhị phân (Binary Search) (chia để trị)</li>
+                </ul>
+            </h2>
+        `;
+            document.querySelector('.example-illustration').innerHTML = html;
+        }
+    }
+
+</script>

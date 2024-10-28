@@ -1,0 +1,31 @@
+{{#each data}}
+    <a class="cell" href="/{{slug}}/{{getElementByIndex options 0}}">Thuật toán cơ bản<br>~~~ {{name}} ~~~</a>
+{{/each}}
+
+<style>
+    .cell {
+        display: inline-block;
+        flex: 1 1 20%;
+        max-width: 30%;
+        min-width: 100px;
+        height: 100px;
+        border-radius: 30px;
+        border: 3px solid white;
+        padding: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+        line-height: 30px;
+        justify-content: center;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cell:hover {
+        border: 3px solid rgb(8, 143, 143);
+        cursor: pointer;
+        color: rgb(8, 143, 143);
+        background-color: white;
+        font-size: large;
+    }
+</style>

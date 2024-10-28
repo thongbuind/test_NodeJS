@@ -1,0 +1,234 @@
+<div class="content">
+    <div class="content-container">
+        <div class="title">
+            <div class="wrapper">
+                <div class="btn close-btn"></div>
+                <div class="btn min-btn"></div>
+                <div class="btn max-btn"></div>
+            </div>
+            <h3 id="title-name"></h3>
+        </div>
+        <div class="body">
+            <div class="option">
+                <ul>
+                    <li id="option-theory">Lý thuyết</li>
+                    <li id="option-sample" style="background-color: white;">Ví dụ</li>
+                    <li id="option-example">Minh hoạ</li>
+                    <li id="option-note">Ghi chú</li>
+                </ul>
+            </div>
+            <div class=" screen">
+                <div class="sample"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .content {
+        display: flex;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(51, 179, 179, 0.2);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content-container {
+        width: 1000px;
+        height: 500px;
+        background-color: rgb(226, 251, 251);
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .title {
+        width: 100%;
+        height: 32px;
+        line-height: 32px;
+        background-color: rgb(8, 143, 143);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        position: relative;
+    }
+
+    .wrapper {
+        width: 70px;
+        height: 32px;
+        padding-left: 5px;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .btn {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        margin-left: 5px;
+    }
+
+    .close-btn {
+        background-color: rgb(255, 59, 48);
+    }
+
+    .max-btn {
+        background-color: rgb(76, 217, 100);
+    }
+
+    .min-btn {
+        background-color: rgb(255, 204, 0);
+    }
+
+    .title h3 {
+        display: inline-block;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .body {
+        width: 1000px;
+    }
+
+    .option {
+        width: 100%;
+        height: 30px;
+    }
+
+    .option li {
+        display: inline-block;
+        list-style: none;
+        font-weight: bold;
+        width: 150px;
+        height: 30px;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 30px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .screen {
+        width: 100%;
+        height: 438px;
+        top: 30px;
+        background-color: white;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: relative;
+        top: 0;
+    }
+
+    .sample {
+        width: 1000px;
+        /* Chiều rộng */
+        height: 438px;
+        /* Chiều cao */
+        padding: 20px;
+        /* Khoảng cách bên trong */
+        box-sizing: border-box;
+        /* Đảm bảo padding và border được tính trong tổng chiều rộng và chiều cao */
+        overflow: auto;
+        /* Thêm thanh cuộn nếu nội dung vượt quá chiều cao */
+        background-color: white;
+        /* Màu nền nhẹ cho sự phân biệt */
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        font-family: Arial, sans-serif;
+        /* Font chữ */
+        position: absolute;
+        top: 0;
+    }
+
+    .sample h3 {
+        font-size: 1.5em;
+        /* Kích thước chữ của tiêu đề */
+        margin-top: 0;
+        /* Loại bỏ khoảng cách trên tiêu đề */
+        margin-bottom: 10px;
+        /* Khoảng cách dưới tiêu đề */
+        color: #333;
+        /* Màu chữ tiêu đề */
+    }
+
+    .sample p {
+        font-size: 1em;
+        /* Kích thước chữ của đoạn văn */
+        line-height: 1.6;
+        /* Khoảng cách giữa các dòng */
+        margin-bottom: 15px;
+        /* Khoảng cách dưới đoạn văn */
+        color: #666;
+        /* Màu chữ đoạn văn */
+    }
+
+    .sample ul {
+        list-style: disc;
+        /* Dấu đầu dòng cho danh sách */
+        padding-left: 20px;
+        /* Khoảng cách bên trái cho danh sách */
+        color: #666;
+        /* Màu chữ danh sách */
+        list-style: none;
+    }
+
+    .sample li {
+        margin: 5px;
+        /* Khoảng cách dưới mỗi mục danh sách */
+    }
+</style>
+
+<script>
+    const data = {{{ data }}};
+    renderSample();
+    document.getElementsByClassName("close-btn")[0].onclick = function (e) {
+        window.location.href = '/';
+    }
+    document.getElementById("option-theory").onclick = function (e) {
+        e.preventDefault();
+        window.location.href = 'theory';
+    }
+    document.getElementById("option-example").onclick = function (e) {
+        e.preventDefault();
+        window.location.href = 'example';
+    }
+    document.getElementById("option-note").onclick = function (e) {
+        e.preventDefault();
+        window.location.href = 'note';
+    }
+    // Functions
+    function renderSample() {
+        let text = data.name;
+        document.getElementById("title-name").textContent = text;
+
+        var html = '';
+        for (let i = 0; i < data["examples"].length; i++) {
+            let tmpHtml = `
+                <h3>${data["examples"][i]["name"]}</h3>
+                <ul>
+            `;
+            for (let j = 0; j < data["examples"][i]["description"].length; j++) {
+                tmpHtml += `
+                    <li><p>${data["examples"][i]["description"][j]}</p></li>
+                `;
+            }
+            tmpHtml += `
+                <li><p><strong>Xem chi tiết source code</strong> <a href="${data["examples"][i]["link"]}" target="_blank">tại đây</a> ฅ՞•ﻌ•՞ฅ</p></li>
+                </ul>
+            `;
+            html += tmpHtml;
+        }
+        document.querySelector('.sample').innerHTML = html;
+    }
+</script>
