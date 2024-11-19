@@ -3,6 +3,8 @@ import express from 'express';
 
 const router = express.Router();
 
+router.post('/store', AlgorithmController.store);
+router.get('/create', AlgorithmController.create);
 router.get('/:slug/theory', AlgorithmController.showTheory);
 router.get('/:slug/sample', AlgorithmController.showSample);
 router.get('/:slug/example/:detail', AlgorithmController.showExampleDetail);
